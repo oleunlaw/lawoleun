@@ -30,88 +30,98 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sky:#f6f9fb;
-    --sky-mid:#edf3f7;
-    --blue-deep:#142c44;
-    --blue-mid:#58758d;
-    --ink:#172331;
-    --ink-dim:#667482;
+    --sky:#f5f8fa;
+    --sky-mid:#eaf0f4;
+    --blue-deep:#112b43;
+    --blue-mid:#536f86;
+    --ink:#172534;
+    --ink-dim:#62717e;
     --white:#ffffff;
     --ochre:#58758d;
     --yellow:#9cb9cc;
-    --gold:#d0a13a;
-    --line:rgba(20,44,68,0.12);
+    --gold:#c99a38;
+    --gold-light:#e2bc67;
+    --line:rgba(17,43,67,0.12);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
     background:var(--white);
     color:var(--ink);
-    font-family:'Pretendard','Noto Sans KR',sans-serif;
+    font-family:'Noto Sans KR',sans-serif;
     line-height:1.7;
     word-break:keep-all;
     -webkit-font-smoothing:antialiased;
   }
   .gowun{font-family:'Gowun Batang','Nanum Myeongjo',serif;}
   a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 36px;}
   img{max-width:100%;display:block;}
+  section{scroll-margin-top:76px;}
+  a:focus-visible,button:focus-visible{outline:3px solid rgba(201,154,56,.42);outline-offset:4px;}
 
-  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
   header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
   .brand{display:flex;align-items:center;gap:10px;}
   .brand-text{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:18px;font-weight:700;color:var(--blue-deep);line-height:1.25;}
-  .brand-text span{display:block;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:0.03em;margin-top:1px;font-family:'Pretendard',sans-serif;}
-  nav{display:flex;gap:30px;}
-  nav a{font-size:14px;color:var(--ink-dim);transition:color .2s;}
+  .brand-text span{display:block;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:0.03em;margin-top:1px;font-family:'Noto Sans KR',sans-serif;}
+  nav{display:flex;gap:25px;}
+  nav a{position:relative;font-size:13.5px;font-weight:500;color:var(--ink-dim);transition:color .2s;}
+  nav a::after{content:'';position:absolute;left:0;right:100%;bottom:-8px;height:1px;background:var(--gold);transition:right .22s;}
+  nav a:hover::after{right:0;}
   nav a:hover{color:var(--blue-mid);}
   .nav-toggle{display:none;background:none;border:none;color:var(--blue-deep);font-size:24px;cursor:pointer;}
 
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;font-size:14.5px;font-weight:700;border-radius:2px;transition:transform .2s, background .2s;}
-  .btn-primary{background:var(--yellow);color:var(--blue-deep);}
-  .btn-primary:hover{background:#b7cedd;transform:translateY(-1px);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:14px 24px;font-size:14.5px;font-weight:700;border-radius:2px;transition:transform .2s,background .2s,border-color .2s,box-shadow .2s;}
+  .btn-primary{background:var(--gold-light);color:var(--blue-deep);box-shadow:0 8px 22px rgba(0,0,0,.13);}
+  .btn-primary:hover{background:#eccd83;transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.17);}
   .btn-ghost{border:1.5px solid rgba(255,255,255,0.7);color:#fff;}
   .btn-ghost:hover{border-color:var(--yellow);color:var(--yellow);}
   .btn-ghost-light{border:1.5px solid var(--blue-mid);color:var(--blue-deep);}
   .btn-ghost-light:hover{background:var(--sky);}
 
   /* Hero: full-bleed video */
-  .hero{position:relative;height:92vh;min-height:560px;overflow:hidden;display:flex;align-items:flex-end;}
-  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-  .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(9,24,38,0.28) 0%, rgba(9,24,38,0.44) 52%, rgba(9,24,38,0.88) 100%);}
-  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:64px;}
+  .hero{position:relative;height:clamp(620px,82vh,820px);overflow:hidden;display:flex;align-items:flex-end;background:var(--blue-deep);}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;}
+  .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,22,35,.74) 0%,rgba(8,22,35,.42) 58%,rgba(8,22,35,.18) 100%),linear-gradient(180deg,rgba(8,22,35,.12) 0%,rgba(8,22,35,.16) 45%,rgba(8,22,35,.82) 100%);}
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:54px;}
   .hero .kicker{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:0.14em;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
   .hero .kicker::before{content:'';width:28px;height:2px;background:var(--gold);display:inline-block;}
-  .hero h1{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-weight:700;font-size:clamp(34px,4.8vw,56px);line-height:1.34;letter-spacing:-0.035em;color:#fff;max-width:820px;}
-  .hero-sub{margin-top:22px;max-width:540px;color:rgba(255,255,255,0.82);font-size:15.5px;}
+  .hero h1{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-weight:700;font-size:clamp(36px,4.4vw,54px);line-height:1.3;letter-spacing:-0.035em;color:#fff;max-width:820px;text-shadow:0 2px 18px rgba(0,0,0,.12);}
+  .hero-sub{margin-top:22px;max-width:650px;color:rgba(255,255,255,0.86);font-size:15.5px;line-height:1.85;}
   .hero-sub strong{color:#e1b653;font-weight:700;}
   .hero-actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-proof{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin-top:24px;color:rgba(255,255,255,.7);font-size:12.5px;}
+  .hero-proof span{display:flex;align-items:center;}
+  .hero-proof span+span::before{content:'';width:1px;height:11px;margin:0 13px;background:rgba(255,255,255,.3);}
 
-  section{padding:88px 0;}
+  section{padding:92px 0;}
   #concerns,#about,#tips{background:var(--sky);border-bottom:1px solid var(--line);}
-  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;flex-wrap:wrap;gap:16px;border-bottom:1px solid var(--line);padding-bottom:22px;}
-  .section-head h2{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:clamp(27px,3vw,36px);font-weight:700;letter-spacing:-0.025em;color:var(--blue-deep);}
-  .section-num{color:var(--ink-dim);font-size:13px;letter-spacing:0.03em;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:42px;flex-wrap:wrap;gap:16px;border-bottom:1px solid var(--line);padding-bottom:20px;}
+  .section-head h2{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:clamp(28px,3vw,35px);font-weight:700;letter-spacing:-0.025em;color:var(--blue-deep);line-height:1.35;}
+  .section-num{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
 
   /* Concerns */
-  .concerns-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-  .concern-card{background:var(--white);border:1px solid var(--line);padding:28px 26px;font-size:15px;color:var(--ink);position:relative;padding-left:64px;}
-  .concern-card::before{content:'✓';position:absolute;left:24px;top:27px;width:22px;height:22px;border:1px solid rgba(208,161,58,.72);display:grid;place-items:center;color:var(--blue-deep);font-family:'Pretendard','Noto Sans KR',sans-serif;font-size:12px;font-weight:700;line-height:1;}
+  .concerns-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .concern-card{background:rgba(255,255,255,.88);border:1px solid rgba(17,43,67,.1);padding:27px 26px 27px 66px;font-size:14.5px;color:var(--ink);position:relative;box-shadow:0 8px 28px rgba(17,43,67,.04);}
+  .concern-card::before{content:'✓';position:absolute;left:25px;top:27px;width:22px;height:22px;border:1px solid rgba(201,154,56,.68);display:grid;place-items:center;color:var(--blue-deep);font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;line-height:1;}
 
   /* Reform callout */
-  .reform-box{background:var(--blue-deep);color:#fff;padding:44px 40px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:36px;align-items:center;}
-  .reform-box .date{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-weight:700;font-size:clamp(25px,3.2vw,35px);color:var(--yellow);line-height:1.35;}
-  .reform-box p{color:rgba(255,255,255,0.82);font-size:14.5px;margin-bottom:10px;}
+  .reform-box{position:relative;background:var(--blue-deep);color:#fff;padding:48px 46px;display:grid;grid-template-columns:.92fr 1.08fr;gap:46px;align-items:center;overflow:hidden;}
+  .reform-box::after{content:'';position:absolute;right:-120px;top:-160px;width:360px;height:360px;border:1px solid rgba(226,188,103,.15);border-radius:50%;}
+  .reform-kicker{margin-bottom:10px;color:var(--gold-light);font-size:11px;font-weight:700;letter-spacing:.14em;}
+  .reform-box .date{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-weight:700;font-size:clamp(25px,3.2vw,34px);color:#fff;line-height:1.42;}
+  .reform-box p{position:relative;z-index:1;color:rgba(255,255,255,0.8);font-size:14.5px;margin-bottom:11px;}
   .reform-box p:last-child{margin-bottom:0;}
 
   /* Before/after quote */
-  .compare-grid{display:flex;flex-direction:column;gap:18px;margin-top:40px;}
+  .compare-grid{display:flex;flex-direction:column;gap:14px;margin-top:32px;}
   .compare-card{padding:27px 30px;border:1px solid var(--line);}
   .compare-card.bad{background:#fbfbfb;}
-  .compare-card.good{position:relative;background:linear-gradient(90deg,rgba(237,243,247,.98) 0%,rgba(246,249,251,.7) 58%,rgba(255,255,255,0) 100%);border:0;padding:34px 38px 36px;box-shadow:none;overflow:hidden;}
+  .compare-card.good{position:relative;background:linear-gradient(90deg,rgba(234,240,244,.98) 0%,rgba(246,249,251,.7) 62%,rgba(255,255,255,0) 100%);border:0;padding:34px 38px 36px;box-shadow:none;overflow:hidden;}
   .compare-card.good::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue-deep);}
   .compare-label{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:15px;font-weight:700;letter-spacing:-0.01em;margin-bottom:12px;display:block;}
   .compare-card.bad .compare-label{color:#8d806b;}
@@ -127,22 +137,21 @@
   .process-lead strong{font-size:18px;color:var(--blue-deep);font-weight:700;}
   .process-lead .process-principle{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-dim);}
   .process-lead em{font-style:normal;font-size:20px;font-weight:700;color:var(--gold);}
-  .process-list{display:flex;flex-direction:column;}
-  .process-item{display:grid;grid-template-columns:80px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line);}
-  .process-item:first-child{border-top:1px solid var(--line);}
-  .process-num{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-weight:700;font-size:27px;color:var(--yellow);}
+  .process-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:50px;border-top:1px solid var(--line);}
+  .process-item{display:grid;grid-template-columns:58px 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--line);}
+  .process-num{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-weight:700;font-size:25px;color:#91aabd;}
   .process-item h3{font-size:17px;font-weight:700;color:var(--blue-deep);margin-bottom:6px;}
   .process-item p{font-size:14px;color:var(--ink-dim);}
 
   /* About lawyers */
-  .lead-lawyer{display:grid;grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr);background:var(--white);border:1px solid var(--line);margin-bottom:54px;box-shadow:0 18px 46px rgba(23,58,92,.08);}
+  .lead-lawyer{display:grid;grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr);background:var(--white);border:1px solid var(--line);margin-bottom:54px;box-shadow:0 18px 46px rgba(17,43,67,.07);}
   .lead-lawyer-photo{min-height:500px;overflow:hidden;background:var(--blue-deep);}
   .lead-lawyer-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
   .lead-lawyer-copy{padding:48px 46px;display:flex;flex-direction:column;justify-content:center;}
   .lead-lawyer-label{display:flex;align-items:center;gap:10px;margin-bottom:15px;color:var(--ochre);font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;}
   .lead-lawyer-label::before{content:'';width:28px;height:2px;background:currentColor;}
   .lead-lawyer-copy h3{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:clamp(27px,2.9vw,34px);line-height:1.35;color:var(--blue-deep);margin-bottom:22px;}
-  .lead-lawyer-copy h3 span{display:block;margin-top:5px;font-family:'Pretendard',sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--blue-mid);}
+  .lead-lawyer-copy h3 span{display:block;margin-top:5px;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--blue-mid);}
   .lead-lawyer-copy p{font-size:15px;color:var(--ink-dim);margin-bottom:13px;}
   .lead-career{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;margin-top:13px;padding-top:20px;border-top:1px solid var(--line);list-style:none;}
   .lead-career li{position:relative;padding-left:13px;font-size:12.5px;color:var(--ink);}
@@ -156,52 +165,49 @@
   .lawyer-card:hover img{transform:scale(1.05);}
   .lawyer-overlay{
     position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(23,58,92,0.15) 0%, rgba(15,30,48,0.94) 68%);
+    background:linear-gradient(180deg,rgba(17,43,67,0) 42%,rgba(10,27,42,.92) 100%);
     color:#fff;
     display:flex;flex-direction:column;justify-content:flex-end;
-    padding:20px;
-    opacity:0;transition:opacity .3s;
+    padding:22px;
+    opacity:1;transition:background .3s;
   }
   .lawyer-card:hover .lawyer-overlay,
-  .lawyer-card.revealed .lawyer-overlay{opacity:1;}
+  .lawyer-card.revealed .lawyer-overlay{background:linear-gradient(180deg,rgba(17,43,67,.08) 12%,rgba(10,27,42,.96) 66%);}
   .lawyer-name{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:19px;font-weight:700;}
   .lawyer-role{font-size:11.5px;color:var(--yellow);margin-top:2px;margin-bottom:12px;}
-  .lawyer-overlay ul{list-style:none;}
+  .lawyer-overlay ul{list-style:none;max-height:0;opacity:0;overflow:hidden;transform:translateY(8px);transition:max-height .35s,opacity .25s,transform .35s;}
+  .lawyer-card:hover .lawyer-overlay ul,
+  .lawyer-card.revealed .lawyer-overlay ul{max-height:180px;opacity:1;transform:translateY(0);}
   .lawyer-overlay ul li{font-size:11px;color:rgba(255,255,255,0.78);padding:3px 0;}
   .lawyer-caption{margin-top:16px;text-align:center;font-size:12.5px;color:var(--ink-dim);}
 
-  /* YouTube placeholder */
-  .yt-placeholder{
-    border:1px dashed var(--line);
-    background:var(--white);
-    padding:60px 32px;
-    text-align:center;
-  }
-  .yt-placeholder h3{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:22px;color:var(--blue-deep);margin-bottom:10px;}
-  .yt-placeholder p{color:var(--ink-dim);font-size:14.5px;}
-
   /* Tips / blog */
-  .tip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .tip-card{background:var(--white);border:1px solid var(--line);padding:28px 24px;display:block;transition:border-color .2s, transform .2s;}
-  .tip-card:hover{border-color:var(--blue-mid);transform:translateY(-2px);}
-  .tip-card .tag{font-size:12px;color:var(--ochre);font-weight:700;margin-bottom:12px;display:block;}
-  .tip-card h3{font-size:15.5px;font-weight:700;color:var(--blue-deep);line-height:1.5;margin-bottom:8px;}
-  .tip-card p{font-size:13px;color:var(--ink-dim);}
+  .tip-grid{display:grid;grid-template-columns:1fr;}
+  .tip-card{position:relative;background:var(--white);border:1px solid var(--line);padding:34px 76px 34px 34px;display:block;transition:border-color .2s,transform .2s,box-shadow .2s;}
+  .tip-card::after{content:'→';position:absolute;right:32px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:24px;transition:transform .2s;}
+  .tip-card:hover{border-color:rgba(201,154,56,.65);transform:translateY(-2px);box-shadow:0 12px 30px rgba(17,43,67,.07);}
+  .tip-card:hover::after{transform:translate(4px,-50%);}
+  .tip-card .tag{font-size:11px;letter-spacing:.1em;color:var(--gold);font-weight:700;margin-bottom:12px;display:block;text-transform:uppercase;}
+  .tip-card h3{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:21px;font-weight:700;color:var(--blue-deep);line-height:1.5;margin-bottom:8px;}
+  .tip-card p{font-size:13.5px;color:var(--ink-dim);}
   .tip-cta{margin-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-top:22px;border-top:1px solid var(--line);}
   .tip-cta p{color:var(--ink-dim);font-size:13.5px;}
 
   /* Contact */
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .contact-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:62px;align-items:stretch;}
   .contact-list{list-style:none;}
   .contact-list li{padding:20px 0;border-bottom:1px solid var(--line);}
   .contact-list li span{display:block;font-size:12.5px;color:var(--blue-mid);margin-bottom:5px;font-weight:600;}
   .contact-list li a,.contact-list li div{font-size:16px;font-weight:500;color:var(--ink);}
-  .contact-panel{background:var(--blue-deep);color:#fff;padding:36px;}
-  .contact-panel h3{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:22px;margin-bottom:12px;}
+  .contact-panel{background:var(--blue-deep);color:#fff;padding:40px;box-shadow:0 18px 42px rgba(17,43,67,.12);}
+  .contact-panel h3{font-family:'Gowun Batang','Nanum Myeongjo',serif;font-size:24px;margin-bottom:12px;}
   .contact-panel p{color:rgba(255,255,255,0.78);font-size:14px;margin-bottom:24px;}
   .contact-panel .btn{width:100%;justify-content:center;margin-bottom:10px;}
   .contact-panel .btn-kakao{background:#fee500;border:1.5px solid #fee500;color:#191919;box-shadow:0 7px 18px rgba(0,0,0,.16);}
   .contact-panel .btn-kakao:hover{background:#f4d600;border-color:#f4d600;color:#191919;transform:translateY(-1px);}
+  .contact-note{margin-top:4px!important;margin-bottom:0!important;text-align:center;font-size:11.5px!important;color:rgba(255,255,255,.58)!important;}
+
+  .mobile-cta{display:none;}
 
   footer{border-top:1px solid var(--line);padding:52px 0 36px;text-align:center;background:var(--sky);}
   .footer-brand{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:26px;}
@@ -210,12 +216,12 @@
   .footer-contact p{font-size:13px;color:var(--ink-dim);margin-bottom:6px;}
   .footer-copyright{font-size:12px;color:#93a4b8;margin-top:18px;}
 
-  @media (max-width:860px){
+  @media (max-width:960px){
     nav{position:fixed;top:76px;left:0;right:0;background:var(--white);flex-direction:column;padding:20px 32px;gap:0;border-bottom:1px solid var(--line);display:none;}
     nav.open{display:flex;}
     nav a{padding:14px 0;border-bottom:1px solid var(--line);}
     .nav-toggle{display:block;}
-    .hero{height:auto;min-height:560px;padding-top:96px;}
+    .hero{height:auto;min-height:620px;padding-top:96px;}
     .concerns-grid{grid-template-columns:1fr;}
     .reform-box{grid-template-columns:1fr;padding:32px 26px;}
     .compare-grid{grid-template-columns:1fr;}
@@ -225,11 +231,27 @@
     .lawyer-grid{grid-template-columns:repeat(3,1fr);}
     .about-grid,.contact-grid{grid-template-columns:1fr;}
     .tip-grid{grid-template-columns:1fr;}
+    .process-list{grid-template-columns:1fr;}
     .process-item{grid-template-columns:56px 1fr;gap:16px;}
     section{padding:64px 0;}
   }
   @media (max-width:680px){
-    .hero h1{font-size:clamp(32px,9vw,44px);}
+    body{padding-bottom:68px;}
+    .wrap{padding-left:22px;padding-right:22px;}
+    header .wrap{height:70px;}
+    nav{top:70px;padding:16px 22px;}
+    .brand-text{font-size:16px;}
+    .brand-text span{font-size:10px;}
+    .hero{min-height:650px;padding-top:86px;}
+    .hero-inner{padding-bottom:42px;}
+    .hero h1{font-size:clamp(32px,9vw,42px);line-height:1.32;}
+    .hero-sub{font-size:14.5px;line-height:1.8;}
+    .hero-actions{margin-top:28px;display:grid;grid-template-columns:1fr;}
+    .hero-actions .btn{width:100%;}
+    .hero-proof{font-size:11.5px;line-height:1.7;}
+    .hero-proof span+span::before{margin:0 9px;}
+    .section-head{margin-bottom:32px;}
+    .section-num{display:none;}
     .compare-card{padding:24px 22px;}
     .compare-card.good{padding:29px 25px;}
     .compare-card.good p{font-size:16.5px;}
@@ -244,6 +266,14 @@
     .partner-heading p{margin-top:5px;}
     .lawyer-grid{grid-template-columns:1fr;gap:16px;}
     .lawyer-card{aspect-ratio:4/5;}
+    .tip-card{padding:28px 54px 28px 24px;}
+    .tip-card::after{right:22px;}
+    .tip-card h3{font-size:18px;}
+    .contact-panel{padding:30px 24px;}
+    .mobile-cta{position:fixed;left:0;right:0;bottom:0;z-index:80;display:grid;grid-template-columns:1fr 1fr;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line);backdrop-filter:blur(10px);box-shadow:0 -6px 24px rgba(17,43,67,.1);}
+    .mobile-cta a{display:flex;align-items:center;justify-content:center;min-height:48px;font-size:13px;font-weight:700;}
+    .mobile-cta .call{background:var(--blue-deep);color:#fff;}
+    .mobile-cta .kakao{background:#fee500;color:#191919;}
   }
 </style>
 </head>
@@ -266,7 +296,7 @@
       <a href="#tips">블로그 · 팁과 노하우</a>
       <a href="#contact">상담 문의</a>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">☰</button>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mainNav">☰</button>
   </div>
 </header>
 
@@ -281,6 +311,9 @@
     <div class="hero-actions">
       <a class="btn btn-primary" href="tel:010-3583-4544">변호사 직통 무료 상담 010-3583-4544</a>
       <a class="btn btn-ghost" href="https://pf.kakao.com/_lVxkmM" target="_blank" rel="noopener">카카오톡 상담</a>
+    </div>
+    <div class="hero-proof" aria-label="주요 업무 범위">
+      <span>사건 분석</span><span>고소장·의견서 작성</span><span>피해자 조사 동행</span>
     </div>
   </div>
 </section>
@@ -303,7 +336,10 @@
 <section id="reform">
   <div class="wrap">
     <div class="reform-box">
-      <div class="date">2026년 10월 2일<br>형사사법제도가 달라집니다</div>
+      <div>
+        <div class="reform-kicker">수사 환경의 변화</div>
+        <div class="date">2026년 10월 2일<br>형사사법제도가 달라집니다</div>
+      </div>
       <div>
         <p>검찰청이 폐지되고 공소청과 중대범죄수사청이 출범하며, 수사와 기소의 기능이 새로운 구조로 재편됩니다.</p>
         <p>이러한 변화 속에서 분명한 것은 하나입니다. <strong style="color:#fff;">피해자가 자신의 피해 사실과 필요한 수사의 내용을 수사기관에 정확하게 전달하는 것</strong>이 더욱 중요해진다는 점입니다.</p>
@@ -397,7 +433,7 @@
 
     <div class="partner-heading">
       <h3>파트너 변호사</h3>
-      <p>사진 위로 마우스를 올리면 약력을 확인하실 수 있습니다.</p>
+      <p>사진을 선택하면 상세 약력을 확인하실 수 있습니다.</p>
     </div>
     <div class="lawyer-grid">
       <div class="lawyer-card">
@@ -444,19 +480,6 @@
   </div>
 </section>
 
-<section id="youtube">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>영상으로 만나보세요</h2>
-      <span class="section-num">YouTube</span>
-    </div>
-    <div class="yt-placeholder">
-      <h3>채널 준비 중입니다</h3>
-      <p>프리미엄 고소대리 전담팀의 유튜브 채널이 곧 공개됩니다.</p>
-    </div>
-  </div>
-</section>
-
 <section id="tips">
   <div class="wrap">
     <div class="section-head">
@@ -465,23 +488,13 @@
     </div>
     <div class="tip-grid">
       <a class="tip-card" href="https://oleun.tistory.com/204" target="_blank" rel="noopener">
-        <span class="tag">Tip</span>
-        <h3>형사사건 피해자, 변호인 선임 필요할까? 시기는?</h3>
-        <p>피해자 입장에서도 변호사 선임이 필요한 이유와, 고소장 작성 단계부터 조력이 필요한 이유를 설명합니다.</p>
-      </a>
-      <a class="tip-card" href="https://oleun.tistory.com/204" target="_blank" rel="noopener">
-        <span class="tag">Tip</span>
-        <h3>형사사건 피해자, 변호인 선임 필요할까? 시기는?</h3>
-        <p>피해자 입장에서도 변호사 선임이 필요한 이유와, 고소장 작성 단계부터 조력이 필요한 이유를 설명합니다.</p>
-      </a>
-      <a class="tip-card" href="https://oleun.tistory.com/204" target="_blank" rel="noopener">
-        <span class="tag">Tip</span>
+        <span class="tag">Featured Article</span>
         <h3>형사사건 피해자, 변호인 선임 필요할까? 시기는?</h3>
         <p>피해자 입장에서도 변호사 선임이 필요한 이유와, 고소장 작성 단계부터 조력이 필요한 이유를 설명합니다.</p>
       </a>
     </div>
     <div class="tip-cta">
-      <p>더 많은 사건 사례와 법률 정보는 티스토리 블로그에서 확인하실 수 있습니다. (현재 링크는 임시로 동일하게 연결되어 있습니다 — 확정되면 교체해 드릴게요.)</p>
+      <p>형사사건 피해자가 알아야 할 절차와 대응 방법을 블로그에서 더 자세히 확인하실 수 있습니다.</p>
       <a class="btn btn-ghost-light" href="https://oleun.tistory.com/" target="_blank" rel="noopener">블로그 바로가기</a>
     </div>
   </div>
@@ -500,14 +513,20 @@
         <li><span>카카오톡 상담</span><a href="https://pf.kakao.com/_lVxkmM" target="_blank" rel="noopener">pf.kakao.com/_lVxkmM</a></li>
       </ul>
       <div class="contact-panel">
-        <h3>지금 이야기해 주십시오</h3>
-        <p>어떤 피해를 입으셨는지, 언제 어떤 일이 있었는지 남겨 주시면 됩니다. 나머지는 저희가 법률적으로 정리하겠습니다.</p>
+        <h3>사건의 핵심부터 함께 정리하겠습니다</h3>
+        <p>어떤 피해를 입으셨는지, 언제 어떤 일이 있었는지만 말씀해 주십시오. 사실관계와 증거, 필요한 수사 방향은 변호사가 법률적으로 정리하겠습니다.</p>
         <a class="btn btn-primary" href="tel:010-3583-4544">전화로 상담 문의</a>
         <a class="btn btn-kakao" href="https://pf.kakao.com/_lVxkmM" target="_blank" rel="noopener">카카오톡으로 상담 문의</a>
+        <p class="contact-note">상담 내용은 변호사의 비밀유지 의무에 따라 신중하게 다룹니다.</p>
       </div>
     </div>
   </div>
 </section>
+
+<div class="mobile-cta" aria-label="빠른 상담">
+  <a class="call" href="tel:010-3583-4544">전화 상담</a>
+  <a class="kakao" href="https://pf.kakao.com/_lVxkmM" target="_blank" rel="noopener">카카오톡 상담</a>
+</div>
 
 <footer>
   <div class="wrap">
@@ -531,8 +550,16 @@
 <script>
   const toggle = document.getElementById('navToggle');
   const nav = document.getElementById('mainNav');
-  toggle.addEventListener('click', () => nav.classList.toggle('open'));
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', '메뉴 열기');
+  }));
 
   // touch-friendly reveal for lawyer cards
   document.querySelectorAll('.lawyer-card').forEach(card => {
